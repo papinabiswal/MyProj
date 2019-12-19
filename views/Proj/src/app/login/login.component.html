@@ -1,0 +1,26 @@
+<div>
+<div class="log-form" *ngIf = "isSignInPage == true">
+  <h2>Login to your account</h2>
+  <form>
+    <input  [(ngModel)]="userName" type="text" title="username" name="userName" placeholder="username"  />
+    <input [(ngModel)]="password" type="password" title="password" name="password" placeholder="password"  />
+    <button type="submit" class="btn" (click)='signIn()'>SignIn</button>
+    <button type="submit" class="btn" style="margin-left: 10%;" (click)='signUp()'>SignUp</button>
+    <br/>
+    <p style="margin-top: 8%;">Forgot your password? <u style="color:#f1c40f;cursor: pointer;" (click)='forgetPassword()' >Click Here!</u></p>
+  </form>
+</div>
+<ng-container *ngIf = "isSignUpClicked == true">
+  <app-registration
+  (cancleButtonEvent) ="onStateChanged($event)">
+</app-registration>
+  </ng-container>
+  <ng-container *ngIf = "isPasswordhanged == true">
+    <app-forget-password
+    (cancleButtonEvent) ="onForgetPassword($event)">
+  </app-forget-password>
+    </ng-container>
+  </div>
+
+
+<!--end log form -->
